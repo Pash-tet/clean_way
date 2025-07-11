@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@source "../../../public/*.html";
+@source "../../helpers/**/*.rb";
+@source "../**/*.js";
+@source "../../views/**/*";
+
+@plugin "daisyui" {
+  themes:
+    cupcake --default,
+    dracula --preferslight;
+}
+
+html,
+body {
+  @apply h-full;
+}
