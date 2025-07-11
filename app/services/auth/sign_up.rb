@@ -1,7 +1,7 @@
 module Auth
   # Auth::SignUp
   class SignUp < ApplicationService
-    step :validate
+    # step :validate
     step :create_user
 
     def validate(user_params:)
@@ -11,7 +11,7 @@ module Auth
     end
 
     def create_user(user)
-      user.save ? Success(user) : Failure(user.errors)
+      user.save ? Success(user) : Failure(user)
     end
 
     private

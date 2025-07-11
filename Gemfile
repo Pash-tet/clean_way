@@ -26,10 +26,9 @@ gem "turbo-rails"
 gem "vite_rails"
 
 group :development, :test do
-  gem "byebug"
-
-  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
+  gem "byebug"
+  gem "rubocop-minitest"
   gem "rubocop-rails-omakase"
 end
 
@@ -42,5 +41,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
+  gem "simplecov"
   gem "selenium-webdriver"
 end

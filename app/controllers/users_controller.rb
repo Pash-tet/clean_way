@@ -3,22 +3,17 @@ class UsersController < ApplicationController
   wrap_parameters :user
 
   def new
-    @errors = {}
     @user = User.new
   end
 
   def create
-    @errors = {}
+    @user = User.new(user_params)
 
-    Auth::SignUp.new.call(user_params:) do |r|
-      r.success do |user|
-        start_new_session_for(user)
-        redirect_to after_authentication_url
-      end
-      r.failure do |errors|
-        @errors = errors
-        render :new, status: :unprocessable_entity
-      end
+    if @user.save
+      start_new_session_for(@user)
+      redirect_to after_authentication_url
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 

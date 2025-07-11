@@ -7,11 +7,11 @@ class User < ApplicationRecord
   NAME_REGEXP = /^[A-Za-z0-9_-]{4,64}$/
   PASSWORD_REGEXP = /^[A-Za-z0-9!@#$%^&*()_+\-=\[\]]{4,64}$/
 
-  validates :name, uniqueness: true
-  validates :email, uniqueness: true
+  validates :name, uniqueness: { case_sensitive: false }
+  validates :email, uniqueness: { case_sensitive: false }
 
   validate do |user|
-    if user.errors.where(:name, :taken).empty? || !user.name.match?(NAME_REGEXP)
+    if user.name.blank? || !user.name.match?(NAME_REGEXP)
       errors.add(:name, :invalid, explanation: "(длина от 4 до 64, символы A-Z, a-z, 0-9, _, -)")
     end
     unless user.password === PASSWORD_REGEXP
