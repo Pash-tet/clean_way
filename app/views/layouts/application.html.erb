@@ -22,10 +22,11 @@
     <%= vite_stylesheet_tag "application" %>
   </head>
 
-  <body>
-    <% if authenticated? %>
-      <%= render partial: "shared/menu" %>
-    <% end %>
-    <main class="flex justify-center"><%= yield %></main>
+  <body class="grid grid-rows-[auto_1fr_auto]">
+    <%= render partial: "shared/menu" %>
+
+    <main class="container mx-auto"><%= yield %></main>
+
+    <%= render partial: "shared/flash" %>
   </body>
 </html>

@@ -14,12 +14,14 @@ gem "rails", "~> 8.0.2"
 gem "pg"
 gem "puma"
 
+gem "rails_icons"
+
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 gem "stimulus-rails"
 
-gem "tabler_icons_ruby"
+# gem "tabler_icons_ruby"
 gem "thruster", require: false
 gem "turbo-rails"
 

@@ -1,5 +1,5 @@
 <% errors = @user.errors %>
-<fieldset class="fieldset rounded-box border-base-300 bg-base-200 w-sm border p-4 shadow-2xl">
+<fieldset class="fieldset rounded-box border-base-300 bg-base-200 mx-auto w-sm border p-4 shadow-2xl">
   <legend class="fieldset-legend text-3xl">Регистрация</legend>
   <%= form_with model: User.new, url: users_path do |form| %>
     <fieldset class="fieldset">
