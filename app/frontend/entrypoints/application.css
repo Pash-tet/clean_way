@@ -5,13 +5,12 @@
 @source "../**/*.js";
 @source "../../views/**/*";
 
+@plugin "@iconify/tailwind4" {
+  prefixes: ph;
+  scale: 1.5;
+}
 @plugin "daisyui" {
   themes:
     cupcake --default,
     dracula --preferslight;
-}
-
-html,
-body {
-  @apply h-full;
 }

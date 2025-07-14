@@ -13,14 +13,12 @@
 <% end %>
 
 <% if flash[:alert] %>
-  <div role="alert" class="alert alert-error absolute bottom-8 left-1/2 shadow-2xl">
-    <span><%= flash[:alert] %></span>
+  <div class="fixed bottom-48 left-1/2 z-50 -translate-x-1/2 transform">
+    <div role="alert" class="alert alert-soft alert-error">
+      <span><%= flash[:alert] %></span>
+    </div>
   </div>
 <% end %>
-
-<div role="alert" class="alert alert-soft alert-error absolute bottom-8 left-1/2">
-  <span>Неверный логин или пароль</span>
-</div>
 <%# if flash[:notice] %>
 <%# = tag.div(flash[:notice], style: "color:green") %>
 <%# end %>

@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "bootsnap", require: false
 gem "bcrypt"
 
+gem "data_migrate"
 gem "dry-transaction"
 
 gem "image_processing"
@@ -12,16 +13,15 @@ gem "kamal", require: false
 gem "rails", "~> 8.0.2"
 
 gem "pg"
+gem "phosphor_icons"
 gem "puma"
-
-gem "rails_icons"
 
 gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 gem "stimulus-rails"
 
-# gem "tabler_icons_ruby"
+gem "tabler_icons_ruby"
 gem "thruster", require: false
 gem "turbo-rails"
 
