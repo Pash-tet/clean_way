@@ -7,6 +7,6 @@ class FullfillNaTodayMeditations < ActiveRecord::Migration[8.0]
   end
 
   def down
-    raise ActiveRecord::IrreversibleMigration
+    TodayMeditation.daily_na.destroy_all
   end
 end

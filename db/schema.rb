@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_13_181241) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_04_122813) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,20 +24,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_13_181241) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
-  end
-
-  create_table "today_meditations", force: :cascade do |t|
-    t.string "source", null: false
-    t.string "title"
-    t.string "quote"
-    t.string "quote_source"
-    t.string "text"
-    t.string "summary"
-    t.integer "day"
-    t.integer "month"
-    t.index ["day"], name: "index_today_meditations_on_day"
-    t.index ["month"], name: "index_today_meditations_on_month"
-    t.index ["source"], name: "index_today_meditations_on_source"
   end
 
   create_table "users", force: :cascade do |t|
