@@ -34,7 +34,7 @@ end
 
 group :development do
   gem "prettier_print", "~> 1.2"
-  gem "syntax_tree", "~> 6.2"
+  gem "syntax_tree", "~> 6.3"
   gem "web-console"
 end
 
