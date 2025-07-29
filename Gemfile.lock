@@ -221,6 +221,12 @@ GEM
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
+    phlex (2.3.1)
+      zeitwerk (~> 2.7)
+    phlex-rails (2.3.1)
+      phlex (~> 2.3.0)
+      railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
     phosphor_icons (0.3.0)
       actionview
       ox (~> 2.14)
@@ -428,6 +434,7 @@ DEPENDENCIES
   image_processing
   kamal
   pg
+  phlex-rails
   phosphor_icons
   prettier_print (~> 1.2)
   puma

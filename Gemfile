@@ -13,6 +13,7 @@ gem "kamal", require: false
 gem "rails", "~> 8.0.2"
 
 gem "pg"
+gem "phlex-rails"
 gem "phosphor_icons"
 gem "puma"
 

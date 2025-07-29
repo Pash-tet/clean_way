@@ -1,6 +1,8 @@
 class PagesController < ApplicationController
   def home
-    @meditation = TodayMeditation.na.find_by!(day: Date.current.day, month: Date.current.month)
+    render Views::Pages::Home.new(
+      meditation: TodayMeditation.daily_na.find_by!(day: Date.current.day, month: Date.current.month)
+    )
   end
 
   def about

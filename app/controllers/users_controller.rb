@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: %i[new create]
+  before_action :check_sign_in, only: %i[new create]
   wrap_parameters :user
 
   def new

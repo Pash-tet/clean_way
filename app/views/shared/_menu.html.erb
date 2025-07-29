@@ -1,37 +1,24 @@
 <div class="mx-auto">
   <% if Current.user.present? %>
-    <ul class="menu menu-lg menu-horizontal bg-base-200 border-base-300 rounded-box my-2 border-1">
-      <li>
-        <%= link_to root_path do %>
-          <span class="icon-[ph--quotes-duotone]"></span>
-          Ёжики
-        <% end %>
-      </li>
-      <li>
-        <%= link_to root_path do %>
-          <span class="icon-[ph--hands-praying-duotone]"></span>
-          Молитвы
-        <% end %>
-      </li>
-      <li>
-        <%= link_to root_path do %>
-          <span class="icon-[ph--notepad-duotone]"></span>
-          Заметки
-        <% end %>
-      </li>
-      <li>
-        <%= link_to root_path do %>
-          <span class="icon-[ph--users-three-duotone]"></span>
-          Группы
-        <% end %>
-      </li>
-      <li>
-        <%= link_to user_path(Current.user) do %>
-          <span class="icon-[ph--user-duotone]"></span>
-          Профиль
-        <% end %>
-      </li>
+    <ul class="menu menu-lg menu-horizontal bg-base-200 border-base-300 rounded-box my-2 hidden border-1 md:flex">
+      <% menu.each do |menu_item| %>
+        <li>
+          <%= link_to menu_item[:link] do %>
+            <span class="icon-[ph--<%= menu_item[:icon] %>-duotone]"></span>
+            <%= menu_item[:label] %>
+          <% end %>
+        </li>
+      <% end %>
     </ul>
+
+    <div class="dock md:hidden">
+      <% menu.each do |menu_item| %>
+        <%= link_to menu_item[:link] do %>
+          <span class="icon-[ph--<%= menu_item[:icon] %>-duotone]"></span>
+          <span class="dock-label"><%= menu_item[:label] %></span>
+        <% end %>
+      <% end %>
+    </div>
   <% else %>
     <div class="h-10"></div>
   <% end %>

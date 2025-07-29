@@ -24,10 +24,4 @@ class SessionsController < ApplicationController
     terminate_session
     redirect_to new_session_path
   end
-
-  private
-
-  def check_sign_in
-    redirect_to root_path if authenticated?
-  end
 end

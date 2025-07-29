@@ -9,6 +9,7 @@
   prefixes: ph;
   scale: 1.5;
 }
+
 @plugin "daisyui" {
   themes:
     cupcake --default,

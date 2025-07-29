@@ -52,4 +52,8 @@ module Authentication
     Current.session.destroy
     cookies.delete(:session_id)
   end
+
+  def check_sign_in
+    redirect_to root_path if authenticated?
+  end
 end
