@@ -7,7 +7,7 @@ class Views::Pages::Home < Views::Base
   def layout = Layout
 
   def view_template
-    h1 { "Hello" }
+    h1(class: "text-red-500") { "Hello !!!" }
     @meditation.entry.each do |par|
       p { par["text"].html_safe }
     end

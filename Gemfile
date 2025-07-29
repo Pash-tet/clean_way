@@ -37,6 +37,7 @@ end
 
 group :development do
   gem "prettier_print", "~> 1.2"
+  gem "ruby_ui", require: false
   gem "syntax_tree", "~> 6.2"
   gem "web-console"
 end
@@ -47,3 +48,5 @@ group :test do
   gem "simplecov"
   gem "selenium-webdriver"
 end
+
+gem "tailwind_merge", "~> 1.3"
