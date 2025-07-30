@@ -3,5 +3,8 @@ import { defineConfig } from "vite"
 import ViteRails from "vite-plugin-rails"
 
 export default defineConfig({
-  plugins: [tailwindcss(), ViteRails()],
+  plugins: [
+    tailwindcss(),
+    ViteRails({ fullReload: { additionalPaths: ["app/components/**/*"] }, compress: { brotli: false } }),
+  ],
 })

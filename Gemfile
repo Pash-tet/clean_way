@@ -13,6 +13,7 @@ gem "kamal", require: false
 gem "rails", "~> 8.0.2"
 
 gem "pg"
+gem "phlex-icons"
 gem "phlex-rails"
 gem "phosphor_icons"
 gem "puma"
@@ -37,7 +38,6 @@ end
 
 group :development do
   gem "prettier_print", "~> 1.2"
-  gem "ruby_ui", require: false
   gem "syntax_tree", "~> 6.2"
   gem "web-console"
 end
@@ -48,5 +48,3 @@ group :test do
   gem "simplecov"
   gem "selenium-webdriver"
 end
-
-gem "tailwind_merge", "~> 1.3"

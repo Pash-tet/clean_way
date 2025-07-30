@@ -1,9 +1,6 @@
 class Components::Base < Phlex::HTML
   # Include any helpers you want to be available across all components
   include Phlex::Rails::Helpers::Routes
-  include Phlex::Rails::Helpers::CSPMetaTag
-  include Phlex::Rails::Helpers::CSRFMetaTags
-  include ViteHelpers
 
   if Rails.env.development?
     def before_template

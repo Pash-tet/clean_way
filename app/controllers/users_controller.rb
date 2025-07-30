@@ -18,6 +18,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    render Views::Users::Show.new
+  end
+
   private
 
   def user_params

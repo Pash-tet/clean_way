@@ -1,12 +1,15 @@
 class Components::Layout < Components::Base
+  include Phlex::Rails::Helpers::CSPMetaTag
+  include Phlex::Rails::Helpers::CSRFMetaTags
+  include ViteHelpers
+
   def initialize(page_info)
     @page_info = page_info
   end
 
   def view_template
     doctype
-
-    html do
+    html(lang: "ru", data: { theme: "cupcake" }, xmlns: "http://www.w3.org/1999/html") do
       head do
         meta(name: "viewport", content: "width=device-width,initial-scale=1")
         meta(name: "apple-mobile-web-app-capable", content: "yes")
@@ -29,6 +32,7 @@ class Components::Layout < Components::Base
       end
 
       body(class: "grid grid-rows-[auto_1fr]") do
+        render Components::Menu.new
         main(class: "mx-auto w-full px-4 md:w-2xl lg:w-4xl") { yield }
       end
     end
