@@ -2,9 +2,9 @@ class Components::Menu < Components::Base
   MenuItem = Data.define(:icon, :label, :link)
 
   def view_template
-    div(class: "mx-auto") do
+    div(class: "mx-auto hidden md:block") do
       if Current.user.present?
-        ul(class: "menu menu-lg menu-horizontal bg-base-200 border-base-300 rounded-box my-2 hidden border-1 md:flex") do
+        ul(class: "menu menu-lg menu-horizontal bg-base-200 border-base-300 rounded-box my-2 border-1") do
           menu_items.each do |item|
             li do
               a(href: item.link) do
@@ -13,6 +13,15 @@ class Components::Menu < Components::Base
               end
             end
           end
+        end
+      end
+    end
+
+    div(class: "dock md:hidden", data: { controller: "theme" }) do
+      menu_items.each do |item|
+        button do
+          raw safe(PhosphorIcons::Icon.new(item.icon, width: 24, style: :duotone).to_svg)
+          span(class: "dock-label") { item.label }
         end
       end
     end
