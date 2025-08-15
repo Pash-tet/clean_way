@@ -4,7 +4,9 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["icon"]
-  connect() {}
+  connect() {
+    console.log("yay")
+  }
 
   switch() {
     // this.iconTarget.innerHTML = `${ui("mode") === "dark" ? "dark" : "light"}_mode`

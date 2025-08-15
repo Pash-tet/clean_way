@@ -4,14 +4,18 @@
 @source "../../helpers/**/*.rb";
 @source "../**/*.js";
 @source "../../views/**/*";
+@source "../../components/**/*";
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@plugin "@iconify/tailwind4" {
+  prefixes: ph;
+  scale: 1.5;
+}
 
 @plugin "daisyui" {
   themes:
     cupcake --default,
     dracula --preferslight;
-}
-
-html,
-body {
-  @apply h-full;
 }

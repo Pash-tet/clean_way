@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" data-theme="cupcake">
+<html lang="ru" data-theme="cupcake" xmlns="http://www.w3.org/1999/html">
   <head>
     <title><%= content_for(:title) || "Clean Way" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -22,10 +22,11 @@
     <%= vite_stylesheet_tag "application" %>
   </head>
 
-  <body>
-    <% if authenticated? %>
-      <%= render partial: "shared/menu" %>
-    <% end %>
-    <main class="flex justify-center"><%= yield %></main>
+  <body class="grid grid-rows-[auto_1fr]">
+    <header class="sticky top-0 z-10 flex justify-center"><%= render partial: "shared/menu" %></header>
+
+    <main class="mx-auto w-full px-4 md:w-2xl lg:w-4xl"><%= yield %></main>
+
+    <%= render partial: "shared/flash" %>
   </body>
 </html>

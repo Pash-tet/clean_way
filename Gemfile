@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "bootsnap", require: false
 gem "bcrypt"
 
+gem "data_migrate"
 gem "dry-transaction"
 
 gem "image_processing"
@@ -12,6 +13,9 @@ gem "kamal", require: false
 gem "rails", "~> 8.0.2"
 
 gem "pg"
+gem "phlex-icons"
+gem "phlex-rails"
+gem "phosphor_icons"
 gem "puma"
 
 gem "solid_cache"

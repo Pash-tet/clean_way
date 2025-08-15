@@ -99,6 +99,9 @@ GEM
     concurrent-ruby (1.3.5)
     connection_pool (2.5.3)
     crass (1.0.6)
+    data_migrate (11.3.0)
+      activerecord (>= 6.1)
+      railties (>= 6.1)
     date (3.4.1)
     docile (1.4.1)
     dotenv (3.1.8)
@@ -211,11 +214,25 @@ GEM
     nokogiri (1.18.8-x86_64-linux-musl)
       racc (~> 1.4)
     ostruct (0.6.2)
+    ox (2.14.23)
+      bigdecimal (>= 3.0)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
+    phlex (2.3.1)
+      zeitwerk (~> 2.7)
+    phlex-icons (2.31.0)
+      phlex (>= 1.11)
+    phlex-rails (2.3.1)
+      phlex (~> 2.3.0)
+      railties (>= 7.1, < 9)
+      zeitwerk (~> 2.7)
+    phosphor_icons (0.3.0)
+      actionview
+      ox (~> 2.14)
+      railties
     pp (0.6.2)
       prettyprint
     prettier_print (1.2.1)
@@ -414,10 +431,14 @@ DEPENDENCIES
   brakeman
   byebug
   capybara
+  data_migrate
   dry-transaction
   image_processing
   kamal
   pg
+  phlex-icons
+  phlex-rails
+  phosphor_icons
   prettier_print (~> 1.2)
   puma
   rails (~> 8.0.2)

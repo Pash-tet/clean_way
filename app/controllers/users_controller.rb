@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   allow_unauthenticated_access only: %i[new create]
+  before_action :check_sign_in, only: %i[new create]
   wrap_parameters :user
 
   def new
@@ -15,6 +16,10 @@ class UsersController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def show
+    render Views::Users::Show.new
   end
 
   private
