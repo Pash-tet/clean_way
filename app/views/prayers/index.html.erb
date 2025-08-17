@@ -1,0 +1,23 @@
+<button id="fab" class="btn btn-primary fixed bottom-24 md:bottom-4">
+  <%= icon("plus", style: :bold, width: 24) %>
+  <span class="hidden md:inline">Добавить</span>
+</button>
+
+<script>
+  console.log("tat")
+  function positionFab() {
+    const main = document.querySelector("main")
+    const fab = document.getElementById("fab")
+
+    if (main && fab) {
+      const rect = main.getBoundingClientRect()
+      console.log(rect)
+      const rightOffset = window.innerWidth - rect.right
+      fab.style.right = `${rightOffset + 16}px` // 16px = отступ от края main
+    }
+  }
+
+  // Позиционируем при загрузке и при изменении размера окна
+  window.addEventListener("resize", positionFab)
+  window.addEventListener("load", positionFab)
+</script>

@@ -1,0 +1,25 @@
+<fieldset class="fieldset rounded-box border-base-300 bg-base-200 mx-auto w-sm border p-4 shadow-2xl">
+  <legend class="fieldset-legend text-3xl">Вход</legend>
+  <%= form_with url: session_path do |form| %>
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Ник</legend>
+      <%= form.text_field :name,
+                          class: "input w-full",
+                          autofocus: true,
+                          autocomplete: "username",
+                          value: params[:name] || "Asshole" %>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Пароль</legend>
+      <%= form.password_field :password, class: "input w-full", value: "12345678" %>
+    </fieldset>
+
+    <div class="divider">
+      Нет аккаунта? <%= link_to "Зарегистроваться", new_user_path, class: "link", data: { turbo_frame: "_top" } %>
+    </div>
+    <div class="text-center"></div>
+
+    <%= form.submit "Войти", class: "btn btn-neutral w-full mt-4" %>
+  <% end %>
+</fieldset>

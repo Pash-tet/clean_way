@@ -1,0 +1,46 @@
+<% errors = @user.errors %>
+<fieldset class="fieldset rounded-box border-base-300 bg-base-200 mx-auto w-sm border p-4 shadow-2xl">
+  <legend class="fieldset-legend text-3xl">Регистрация</legend>
+  <%= form_with model: User.new, url: users_path do |form| %>
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Ник</legend>
+      <%= form.text_field :name,
+                          class: "input w-full #{errors[:name].present? ? "input-error" : ""}",
+                          autofocus: true,
+                          autocomplete: "username",
+                          value: params[:name] || "Asshole" %>
+      <%= render partial: "shared/forms/error", locals: { errors: errors[:name] } %>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Email</legend>
+      <%= form.email_field :email,
+                           class: "input w-full #{errors[:email].present? ? "input-error" : ""}",
+                           autocomplete: "email",
+                           value: params[:email] || "test@example.com" %>
+      <%= render partial: "shared/forms/error", locals: { errors: errors[:email] } %>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Пароль</legend>
+      <%= form.password_field :password,
+                              class: "input w-full #{errors[:password].present? ? "input-error" : ""}",
+                              value: "12345678" %>
+      <%= render partial: "shared/forms/error", locals: { errors: errors[:password] } %>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Подтверждение пароля</legend>
+      <%= form.password_field :password_confirmation,
+                              class: "input w-full #{errors[:password_confirmation].present? ? "input-error" : ""}",
+                              value: "12345678" %>
+      <%= render partial: "shared/forms/error", locals: { errors: errors[:password_confirmation] } %>
+    </fieldset>
+
+    <div class="text-center">
+      Есть аккаунт? <%= link_to "Войти", new_session_path, class: "link", data: { turbo_frame: "_top" } %>
+    </div>
+
+    <%= form.submit "Регистрация", class: "btn btn-neutral w-full mt-4" %>
+  <% end %>
+</fieldset>

@@ -1,0 +1,2 @@
+module BaseConstants
+end

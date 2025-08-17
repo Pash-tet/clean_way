@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@source "../../../public/*.html";
+@source "../../helpers/**/*.rb";
+@source "../**/*.js";
+@source "../../views/**/*";
+
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --preferslight;
+}

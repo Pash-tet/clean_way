@@ -1,0 +1,8 @@
+<div class="dock md:hidden">
+  <% menu.each do |menu_item| %>
+    <%= link_to menu_item[:link] do %>
+      <%= phosphor_icon menu_item[:icon], style: :duotone, width: 24 %>
+      <span class="dock-label"><%= menu_item[:label] %></span>
+    <% end %>
+  <% end %>
+</div>

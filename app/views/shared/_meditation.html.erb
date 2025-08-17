@@ -1,0 +1,15 @@
+<article class="bg-base-200 border-base-400 collapse-arrow border-base-300 collapse border">
+  <input type="checkbox" />
+  <div class="collapse-title text-xl font-bold">
+    <%= l(Date.new(0, meditation.month, meditation.day), format: "%d %B") %>. <%= meditation.title %>
+    <br />
+  </div>
+  <div class="collapse-content text-justify">
+    <% meditation.entry.each do |paragraph| %>
+      <p class="<%= paragraph_class(type: paragraph["type"]) %>"><%= paragraph["text"].html_safe %></p>
+    <% end %>
+    <!--    <p class="italic"><%# = meditation.quote %></p>-->
+    <!--    <p class="text-right italic"><%# = meditation.quote_source %></p>-->
+    <!--    <p class="mt-4"><%# = meditation.text %></p>-->
+  </div>
+</article>
