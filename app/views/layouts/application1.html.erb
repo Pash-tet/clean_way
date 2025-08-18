@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="cupcake" xmlns="http://www.w3.org/1999/html" class="h-full">
+  <%= render partial: "shared/head" %>
+
+  <body class="h-full">
+    <nav class="fixed top-0 right-0 left-0 z-50 border-b"><%= render partial: "shared/navbar" %></nav>
+    <aside
+      class="fixed top-0 left-0 z-40 h-screen w-64 -translate-x-full border-r pt-14 transition-transform md:translate-x-0"
+      aria-label="Sidenav"
+    >
+      <div class="h-full overflow-y-auto">
+        <ul class="menu my-2 w-full">
+          <% menu.each do |menu_item| %>
+            <li>
+              <%= link_to menu_item[:link] do %>
+                <%= phosphor_icon menu_item[:icon], style: :duotone, width: 24 %>
+                <%= menu_item[:label] %>
+              <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </aside>
+
+    <div class="h-auto p-4 pt-20 md:ml-64">
+      <main class="mx-auto md:w-[80%]"><%= yield %></main>
+    </div>
+  </body>
+</html>
