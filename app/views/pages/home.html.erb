@@ -1,8 +1,36 @@
 <div class="text-3xl">Hello Pasha !</div>
+<button class="btn btn-primary">Test</button>
+<div class="join">
+  <input class="join-item btn" type="radio" name="options" aria-label="Radio 1" />
+  <input class="join-item btn" type="radio" name="options" aria-label="Radio 2" />
+  <input class="join-item btn" type="radio" name="options" aria-label="Radio 3" />
+</div>
 
-<%= 100.times do %>
+<form>
+  <div class="card bg-base-100 w-96 shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title">Добавить событие</h2>
+      <input type="date" class="input w-full" />
+      <div class="tabs tabs-lift">
+        <input type="radio" name="my_tabs_3" class="tab" aria-label="Ежедневник" checked="checked" />
+        <div class="tab-content bg-base-100 border-base-300 p-6">Ежедневник</div>
+
+        <input type="radio" name="my_tabs_3" class="tab" aria-label="Медитация" />
+        <div class="tab-content bg-base-100 border-base-300 p-6">Молитва</div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<article class="prose lg:prose-xl">
+  <h1>Garlic bread with cheese: What the science tells us</h1>
   <p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, aliquam, doloremque eum fugit illo illum iusto nulla
-    perferendis repudiandae sapiente sequi sit, tenetur ullam unde vitae. Aliquid doloribus in nisi?
+    For years parents have espoused the health benefits of eating garlic bread with cheese to their children, with the
+    food earning such an iconic status in our culture that kids will often dress up as warm, cheesy loaf for Halloween.
   </p>
-<% end %>
+  <p>
+    But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases springing up around
+    the country.
+  </p>
+  <!-- ... -->
+</article>

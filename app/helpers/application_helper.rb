@@ -19,6 +19,11 @@ module ApplicationHelper
   def menu
     [
       {
+        icon: "calendar-check",
+        label: "Расписание",
+        link: root_path
+      },
+      {
         icon: "quotes",
         label: "Ёжики",
         link: root_path
@@ -42,7 +47,7 @@ module ApplicationHelper
         icon: "user",
         label: "Профиль",
         link: user_path(Current.user)
-      },
+      }
     ]
   end
 end

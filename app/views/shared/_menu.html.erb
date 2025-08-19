@@ -1,12 +1,10 @@
-<div class="mx-auto hidden md:block">
-  <ul class="menu menu-lg menu-horizontal bg-base-200 border-base-300 rounded-box my-2 border-1">
-    <% menu.each do |menu_item| %>
-      <li>
-        <%= link_to menu_item[:link] do %>
-          <%= phosphor_icon menu_item[:icon], style: :duotone, width: 24 %>
-          <%= menu_item[:label] %>
-        <% end %>
-      </li>
-    <% end %>
-  </ul>
-</div>
+<ul class="menu menu-lg w-full">
+  <% menu.each do |menu_item| %>
+    <li>
+      <%= link_to menu_item[:link] do %>
+        <%= phosphor_icon menu_item[:icon], style: :duotone, width: 24 %>
+        <%= menu_item[:label] %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
