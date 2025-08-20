@@ -1,36 +1,147 @@
-<div class="text-3xl">Hello Pasha !</div>
-<button class="btn btn-primary">Test</button>
-<div class="join">
-  <input class="join-item btn" type="radio" name="options" aria-label="Radio 1" />
-  <input class="join-item btn" type="radio" name="options" aria-label="Radio 2" />
-  <input class="join-item btn" type="radio" name="options" aria-label="Radio 3" />
-</div>
+<div class="bg-base-200 mx-auto max-w-md space-y-4 rounded-2xl p-6 shadow-lg">
+  <h2 class="text-xl font-bold">Создание события</h2>
 
-<form>
-  <div class="card bg-base-100 w-96 shadow-sm">
-    <div class="card-body">
-      <h2 class="card-title">Добавить событие</h2>
-      <input type="date" class="input w-full" />
-      <div class="tabs tabs-lift">
-        <input type="radio" name="my_tabs_3" class="tab" aria-label="Ежедневник" checked="checked" />
-        <div class="tab-content bg-base-100 border-base-300 p-6">Ежедневник</div>
+  <%= form_with url: "events_path", method: :post, local: true do |f| %>
+    <!-- Период повторения -->
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Период повторения</span>
+      </label>
+      <%= f.select :repeat,
+                   [
+                     %w[Одноразовое once],
+                     ["Каждый день", "daily"],
+                     ["Каждую неделю", "weekly"],
+                     ["Каждый месяц", "monthly"],
+                     ["Каждый год", "yearly"],
+                   ],
+                   {},
+                   class: "select select-bordered w-full",
+                   id: "repeat-select" %>
+    </div>
 
-        <input type="radio" name="my_tabs_3" class="tab" aria-label="Медитация" />
-        <div class="tab-content bg-base-100 border-base-300 p-6">Молитва</div>
+    <!-- Дни недели (видны только при weekly) -->
+    <div class="form-control hidden" id="weekdays-select">
+      <label class="label">
+        <span class="label-text">Выберите дни недели</span>
+      </label>
+      <div class="flex flex-wrap gap-2">
+        <% [
+             %w[Пн monday],
+             %w[Вт tuesday],
+             %w[Ср wednesday],
+             %w[Чт thursday],
+             %w[Пт friday],
+             %w[Сб saturday],
+             %w[Вс sunday],
+           ].each do |day_name, day_value| %>
+          <div>
+            <input
+              type="checkbox"
+              name="event[weekdays][]"
+              value="<%= day_value %>"
+              id="weekday-<%= day_value %>"
+              class="peer hidden"
+            />
+            <label for="weekday-<%= day_value %>" class="btn btn-outline btn-sm peer-checked:btn-primary">
+              <%= day_name %>
+            </label>
+          </div>
+        <% end %>
       </div>
     </div>
-  </div>
-</form>
 
-<article class="prose lg:prose-xl">
-  <h1>Garlic bread with cheese: What the science tells us</h1>
-  <p>
-    For years parents have espoused the health benefits of eating garlic bread with cheese to their children, with the
-    food earning such an iconic status in our culture that kids will often dress up as warm, cheesy loaf for Halloween.
-  </p>
-  <p>
-    But a recent study shows that the celebrated appetizer may be linked to a series of rabies cases springing up around
-    the country.
-  </p>
-  <!-- ... -->
-</article>
+    <!-- Дата и время -->
+    <div class="grid grid-cols-2 gap-4">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Дата начала</span>
+        </label>
+        <%= f.date_field :start_date, class: "input input-bordered w-full" %>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Время начала</span>
+        </label>
+        <%= f.time_field :start_time, class: "input input-bordered w-full" %>
+      </div>
+    </div>
+
+    <!-- Тип -->
+    <div class="form-control">
+      <label class="label">
+        <span class="label-text">Тип</span>
+      </label>
+      <%= f.select :event_type,
+                   [%w[Молитва prayer], %w[Медитация meditation]],
+                   {},
+                   class: "select select-bordered w-full",
+                   id: "event-type-select" %>
+    </div>
+
+    <!-- Список молитв или медитаций -->
+    <div class="form-control" id="items-select">
+      <label class="label">
+        <span class="label-text">Выберите</span>
+      </label>
+      <%= f.select :item,
+                   [
+                     ["Утренняя молитва", "morning_prayer"],
+                     ["Вечерняя молитва", "evening_prayer"],
+                     ["Молитва благодарности", "thanks_prayer"],
+                   ],
+                   {},
+                   class: "select select-bordered w-full",
+                   id: "dynamic-items" %>
+    </div>
+
+    <!-- Кнопка -->
+    <%= f.submit "Создать событие", class: "btn btn-primary w-full mt-4" %>
+  <% end %>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const repeatSelect = document.getElementById("repeat-select")
+    const weekdaysSelect = document.getElementById("weekdays-select")
+
+    const typeSelect = document.getElementById("event-type-select")
+    const itemsSelect = document.getElementById("dynamic-items")
+
+    function updateWeekdays() {
+      weekdaysSelect.classList.toggle("hidden", repeatSelect.value !== "weekly")
+    }
+
+    function updateItems() {
+      const prayers = [
+        ["Утренняя молитва", "morning_prayer"],
+        ["Вечерняя молитва", "evening_prayer"],
+        ["Молитва благодарности", "thanks_prayer"],
+      ]
+
+      const meditations = [
+        ["Осознанность", "mindfulness"],
+        ["Дыхательная", "breathing"],
+        ["Визуализация", "visualization"],
+      ]
+
+      itemsSelect.innerHTML = ""
+
+      const list = typeSelect.value === "prayer" ? prayers : meditations
+
+      list.forEach(([label, value]) => {
+        const opt = document.createElement("option")
+        opt.value = value
+        opt.textContent = label
+        itemsSelect.appendChild(opt)
+      })
+    }
+
+    repeatSelect.addEventListener("change", updateWeekdays)
+    typeSelect.addEventListener("change", updateItems)
+
+    // init
+    updateWeekdays()
+    updateItems()
+  })
+</script>

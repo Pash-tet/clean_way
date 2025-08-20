@@ -1,16 +1,12 @@
-import { Controller } from "@hotwired/stimulus"
-
-// import { ui } from "beercss"
+import {Controller} from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["icon"]
+  static targets = ["content"]
   connect() {
     console.log("yay")
   }
 
   switch() {
-    // this.iconTarget.innerHTML = `${ui("mode") === "dark" ? "dark" : "light"}_mode`
-    //
-    // ui("mode", ui("mode") === "dark" ? "light" : "dark")
+    this.contentTarget.classList.toggle("hidden")
   }
 }
