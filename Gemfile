@@ -10,7 +10,7 @@ gem "image_processing"
 
 gem "kamal", require: false
 
-gem "rails", "~> 8.0.2.1"
+gem "rails", "~> 8.1.0"
 
 gem "pg"
 gem "phosphor_icons"
